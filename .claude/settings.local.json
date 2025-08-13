@@ -5,7 +5,8 @@
       "Bash(npx next lint:*)",
       "Bash(rm:*)",
       "Bash(curl:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []
