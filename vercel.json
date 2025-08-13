@@ -1,6 +1,5 @@
 {
-  "buildCommand": "prisma generate && npm run build",
-  "outputDirectory": ".next",
+  "buildCommand": "npx prisma generate && npm run build",
   "framework": "nextjs",
   "installCommand": "npm install",
   "env": {
@@ -11,11 +10,6 @@
     "env": {
       "DATABASE_URL": "@database_url",
       "NEXT_TELEMETRY_DISABLED": "1"
-    }
-  },
-  "functions": {
-    "src/app/api/udyam-registration/route.ts": {
-      "maxDuration": 30
     }
   }
 }
