@@ -1,0 +1,293 @@
+{
+  "step1": {
+    "title": "Aadhaar Number Verification",
+    "description": "Enter Aadhaar number for verification and OTP generation",
+    "fields": [
+      {
+        "id": "aadhaar",
+        "name": "Aadhaar Number",
+        "type": "text",
+        "placeholder": "Enter 12 digit Aadhaar Number",
+        "maxLength": 12,
+        "required": true,
+        "pattern": "^[0-9]{12}$",
+        "validation": {
+          "regex": "^[0-9]{12}$",
+          "message": "Aadhaar number must be exactly 12 digits"
+        }
+      },
+      {
+        "id": "nameAsPerAadhaar",
+        "name": "Name as per Aadhaar",
+        "type": "text",
+        "placeholder": "Enter name exactly as mentioned in Aadhaar",
+        "required": true,
+        "pattern": "^[a-zA-Z\\s\\.]+$",
+        "validation": {
+          "regex": "^[a-zA-Z\\s\\.]+$",
+          "message": "Name should contain only letters, spaces and dots"
+        }
+      },
+      {
+        "id": "disclaimer",
+        "name": "Declaration",
+        "type": "checkbox",
+        "label": "I, the holder of above mentioned Aadhaar Number, hereby give my consent to use my Aadhaar Number for Udyam Registration",
+        "required": true
+      },
+      {
+        "id": "otp",
+        "name": "OTP",
+        "type": "text",
+        "placeholder": "Enter 6 digit OTP",
+        "maxLength": 6,
+        "required": true,
+        "pattern": "^[0-9]{6}$",
+        "conditional": true,
+        "showAfter": "aadhaarValidation",
+        "validation": {
+          "regex": "^[0-9]{6}$",
+          "message": "OTP must be exactly 6 digits"
+        }
+      }
+    ],
+    "buttons": [
+      {
+        "id": "validateAadhaar",
+        "text": "Validate & Generate OTP",
+        "type": "primary",
+        "action": "validateAadhaar"
+      },
+      {
+        "id": "verifyOTP",
+        "text": "Verify OTP",
+        "type": "primary",
+        "action": "verifyOTP",
+        "conditional": true,
+        "showAfter": "otpSent"
+      }
+    ]
+  },
+  "step2": {
+    "title": "PAN & Personal Information",
+    "description": "Enter PAN and other business details",
+    "fields": [
+      {
+        "id": "typeOfOrganisation",
+        "name": "Type of Organisation",
+        "type": "select",
+        "placeholder": "Select Type of Organisation",
+        "required": true,
+        "options": [
+          {
+            "value": "Proprietorship",
+            "label": "Proprietorship"
+          },
+          {
+            "value": "Partnership",
+            "label": "Partnership"
+          },
+          {
+            "value": "HUF",
+            "label": "Hindu Undivided Family"
+          },
+          {
+            "value": "Company",
+            "label": "Company"
+          },
+          {
+            "value": "LLP",
+            "label": "Limited Liability Partnership"
+          },
+          {
+            "value": "Trust",
+            "label": "Trust"
+          },
+          {
+            "value": "Society",
+            "label": "Society"
+          },
+          {
+            "value": "Others",
+            "label": "Others"
+          }
+        ]
+      },
+      {
+        "id": "pan",
+        "name": "PAN",
+        "type": "text",
+        "placeholder": "Enter PAN (e.g., ABCDE1234F)",
+        "maxLength": 10,
+        "required": true,
+        "pattern": "^[A-Z]{5}[0-9]{4}[A-Z]{1}$",
+        "validation": {
+          "regex": "^[A-Z]{5}[0-9]{4}[A-Z]{1}$",
+          "message": "PAN format: 5 letters, 4 numbers, 1 letter (e.g., ABCDE1234F)"
+        },
+        "transform": "uppercase"
+      },
+      {
+        "id": "mobile",
+        "name": "Mobile Number",
+        "type": "tel",
+        "placeholder": "Enter 10 digit Mobile Number",
+        "maxLength": 10,
+        "required": true,
+        "pattern": "^[6-9][0-9]{9}$",
+        "validation": {
+          "regex": "^[6-9][0-9]{9}$",
+          "message": "Mobile number must be 10 digits starting with 6-9"
+        }
+      },
+      {
+        "id": "email",
+        "name": "Email ID",
+        "type": "email",
+        "placeholder": "Enter Email ID",
+        "required": true,
+        "validation": {
+          "regex": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+          "message": "Please enter a valid email address"
+        }
+      },
+      {
+        "id": "socialCategory",
+        "name": "Social Category",
+        "type": "select",
+        "placeholder": "Select Social Category",
+        "required": true,
+        "options": [
+          {
+            "value": "General",
+            "label": "General"
+          },
+          {
+            "value": "SC",
+            "label": "Scheduled Caste (SC)"
+          },
+          {
+            "value": "ST",
+            "label": "Scheduled Tribe (ST)"
+          },
+          {
+            "value": "OBC",
+            "label": "Other Backward Class (OBC)"
+          }
+        ]
+      },
+      {
+        "id": "gender",
+        "name": "Gender",
+        "type": "radio",
+        "required": true,
+        "options": [
+          {
+            "value": "Male",
+            "label": "Male"
+          },
+          {
+            "value": "Female",
+            "label": "Female"
+          },
+          {
+            "value": "Transgender",
+            "label": "Transgender"
+          }
+        ]
+      },
+      {
+        "id": "speciallyAbled",
+        "name": "Specially Abled",
+        "type": "radio",
+        "required": true,
+        "options": [
+          {
+            "value": "Yes",
+            "label": "Yes"
+          },
+          {
+            "value": "No",
+            "label": "No"
+          }
+        ]
+      },
+      {
+        "id": "nameOfEnterprise",
+        "name": "Name of Enterprise",
+        "type": "text",
+        "placeholder": "Enter Name of Enterprise/Business",
+        "required": true,
+        "validation": {
+          "minLength": 3,
+          "maxLength": 100,
+          "message": "Enterprise name should be between 3 to 100 characters"
+        }
+      },
+      {
+        "id": "majorActivity",
+        "name": "Major Activity",
+        "type": "select",
+        "placeholder": "Select Major Activity",
+        "required": true,
+        "options": [
+          {
+            "value": "Manufacturing",
+            "label": "Manufacturing"
+          },
+          {
+            "value": "Services",
+            "label": "Services"
+          }
+        ]
+      }
+    ],
+    "buttons": [
+      {
+        "id": "validateAndSave",
+        "text": "Validate & Save",
+        "type": "primary",
+        "action": "validateAndSave"
+      },
+      {
+        "id": "reset",
+        "text": "Reset",
+        "type": "secondary",
+        "action": "reset"
+      }
+    ]
+  },
+  "additionalInfo": {
+    "validationRules": {
+      "aadhaar": {
+        "format": "12 digits",
+        "example": "123456789012",
+        "description": "Unique 12-digit identification number issued by UIDAI"
+      },
+      "pan": {
+        "format": "AAAAA9999A",
+        "example": "ABCDE1234F",
+        "description": "10-character alphanumeric PAN issued by Income Tax Department"
+      },
+      "mobile": {
+        "format": "10 digits starting with 6-9",
+        "example": "9876543210",
+        "description": "Indian mobile number"
+      },
+      "email": {
+        "format": "standard email format",
+        "example": "user@example.com",
+        "description": "Valid email address for communication"
+      }
+    },
+    "flowDescription": [
+      "Enter Aadhaar number and name as per Aadhaar",
+      "Accept the declaration checkbox",
+      "Click \"Validate & Generate OTP\"",
+      "Enter the OTP received on Aadhaar-linked mobile",
+      "Click \"Verify OTP\"",
+      "Fill in PAN and business details",
+      "Click \"Validate & Save\" to proceed"
+    ]
+  }
+}
