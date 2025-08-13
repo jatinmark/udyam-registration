@@ -2,10 +2,9 @@ import React from 'react';
 
 interface ProgressTrackerProps {
   currentStep: number;
-  totalSteps: number;
 }
 
-const ProgressTracker: React.FC<ProgressTrackerProps> = ({ currentStep, totalSteps }) => {
+const ProgressTracker: React.FC<ProgressTrackerProps> = ({ currentStep }) => {
   const steps = [
     { number: 1, title: 'Aadhaar Verification' },
     { number: 2, title: 'PAN & Business Details' }

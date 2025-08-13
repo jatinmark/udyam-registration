@@ -40,7 +40,6 @@ describe('Step1Aadhaar Component', () => {
   test('validates name field', async () => {
     render(<Step1Aadhaar onComplete={mockOnComplete} initialData={initialData} />);
     
-    const nameInput = screen.getByLabelText(/Name as per Aadhaar/i);
     const submitButton = screen.getByRole('button', { name: /Validate & Proceed/i });
     
     // Test empty name

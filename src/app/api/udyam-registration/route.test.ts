@@ -18,7 +18,7 @@ jest.mock('@prisma/client', () => {
 });
 
 describe('Udyam Registration API', () => {
-  let prisma: any;
+  let prisma: ReturnType<typeof PrismaClient>;
 
   beforeEach(() => {
     prisma = new PrismaClient();

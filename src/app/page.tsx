@@ -5,21 +5,22 @@ import Step1Aadhaar from '@/components/Step1Aadhaar';
 import Step2PAN from '@/components/Step2PAN';
 import ProgressTracker from '@/components/ProgressTracker';
 import RegistrationSuccess from '@/components/RegistrationSuccess';
+import { FormData, Step1Data, Step2Data } from '@/types';
 
 export default function Home() {
   const [currentStep, setCurrentStep] = useState(1);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     step1: {},
     step2: {},
-    registration: null as any
+    registration: null
   });
 
-  const handleStep1Complete = (data: any) => {
+  const handleStep1Complete = (data: Step1Data) => {
     setFormData(prev => ({ ...prev, step1: data }));
     setCurrentStep(2);
   };
 
-  const handleStep2Complete = (data: any) => {
+  const handleStep2Complete = (data: Step2Data & { registrationNumber: string; registrationDate: string; }) => {
     setFormData(prev => ({ 
       ...prev, 
       step2: data,
@@ -62,7 +63,7 @@ export default function Home() {
             </div>
 
             {currentStep <= 2 && (
-              <ProgressTracker currentStep={currentStep} totalSteps={2} />
+              <ProgressTracker currentStep={currentStep} />
             )}
 
             <div className="p-6 md:p-8">

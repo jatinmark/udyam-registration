@@ -2,12 +2,19 @@
 
 import React, { useState } from 'react';
 import formSchema from '@/data/udyam-form-schema.json';
+import { Step1Data, Step2Data } from '@/types';
+
+interface Step2CompleteData extends Step2Data {
+  registrationNumber: string;
+  registrationDate: string;
+  registrationId: number;
+}
 
 interface Step2PANProps {
-  onComplete: (data: any) => void;
+  onComplete: (data: Step2CompleteData) => void;
   onBack: () => void;
-  initialData?: any;
-  step1Data?: any;
+  initialData?: Partial<Step2Data>;
+  step1Data?: Partial<Step1Data>;
 }
 
 const Step2PAN: React.FC<Step2PANProps> = ({ onComplete, onBack, initialData = {}, step1Data = {} }) => {

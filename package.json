@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "postinstall": "prisma generate",
     "server": "node server/index.js",
     "server:no-db": "node server/index-no-db.js",
     "test": "jest",

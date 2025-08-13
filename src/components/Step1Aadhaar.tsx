@@ -2,10 +2,11 @@
 
 import React, { useState } from 'react';
 import formSchema from '@/data/udyam-form-schema.json';
+import { Step1Data } from '@/types';
 
 interface Step1AadhaarProps {
-  onComplete: (data: any) => void;
-  initialData?: any;
+  onComplete: (data: Step1Data) => void;
+  initialData?: Partial<Step1Data>;
 }
 
 const Step1Aadhaar: React.FC<Step1AadhaarProps> = ({ onComplete, initialData = {} }) => {
