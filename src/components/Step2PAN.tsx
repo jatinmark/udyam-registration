@@ -100,8 +100,9 @@ const Step2PAN: React.FC<Step2PANProps> = ({ onComplete, onBack, initialData = {
         ...formData
       };
       
-      // Call API to save registration
-      const response = await fetch('/api/udyam-registration', {
+      // Call backend API to save registration
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://udyam-registration-6ahu.onrender.com';
+      const response = await fetch(`${apiUrl}/api/submit-registration`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -115,9 +116,9 @@ const Step2PAN: React.FC<Step2PANProps> = ({ onComplete, onBack, initialData = {
         // Pass registration details to parent component
         onComplete({
           ...formData,
-          registrationNumber: result.data.registrationNumber,
-          registrationDate: result.data.registrationDate,
-          registrationId: result.data.id
+          registrationNumber: result.registrationNumber || result.data?.registrationNumber,
+          registrationDate: result.data?.registrationDate || new Date().toISOString(),
+          registrationId: result.data?.id || 0
         });
       } else {
         // Show error message

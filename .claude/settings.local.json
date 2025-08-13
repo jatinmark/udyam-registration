@@ -3,7 +3,9 @@
     "allow": [
       "Bash(npx eslint:*)",
       "Bash(npx next lint:*)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(curl:*)",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "ask": []
