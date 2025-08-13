@@ -84,7 +84,7 @@ udyam-registration/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/udyam-registration.git
+git clone https://github.com/jatinmark/udyam-registration.git
 cd udyam-registration
 ```
 
